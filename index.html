@@ -72,156 +72,66 @@ body{
     }
 }
 
+/* ===================================
+   FORMATO FIJO PARA GENERAR PDF
+=================================== */
 
-/* ================================
-   RESPONSIVE CELULAR
-================================ */
-
-@media (max-width: 768px){
-
-    body{
-        background:#ffffff;
-    }
-
-    .container{
-        padding:0;
-    }
-
-    .documento{
-        padding:15px;
-        box-shadow:none;
-        width:100%;
-    }
-
-
-    /* ENCABEZADO */
-
-    .row.align-items-center{
-        text-align:center;
-    }
-
-    .col-md-2,
-    .col-md-7,
-    .col-md-3{
-        width:100%;
-        margin-bottom:15px;
-    }
-
-
-    .logo-box img,
-    img{
-        max-width:120px;
-    }
-
-
-    h2{
-        font-size:26px;
-    }
-
-
-    .titulo{
-        font-size:28px;
-        margin:15px 0;
-    }
-
-
-    /* DATOS CLIENTE */
-
-    .row.mb-4 .col-md-5,
-    .row.mb-4 .col-md-4,
-    .row.mb-4 .col-md-3{
-        width:100%;
-        margin-bottom:15px;
-    }
-
-
-    /* TABLA RESPONSIVE */
-
-    #tablaItems{
-        font-size:13px;
-        display:block;
-        overflow-x:auto;
-        white-space:nowrap;
-    }
-
-
-    #tablaItems input{
-        min-width:120px;
-        font-size:13px;
-    }
-
-
-    #tablaItems th,
-    #tablaItems td{
-        padding:5px;
-    }
-
-
-    /* BOTON AGREGAR */
-
-    .btn-success{
-        width:100%;
-    }
-
-
-    /* OBSERVACIONES Y TOTALES */
-
-    .row .col-md-7,
-    .row .col-md-5{
-        width:100%;
-    }
-
-
-    .total-box{
-        font-size:16px;
-    }
-
-
-    /* FIRMA */
-
-    .col-6{
-        width:100%;
-    }
-
-
-    /* INPUT IVA */
-
-    #iva{
-        width:80px!important;
-    }
-
+.modo-pdf{
+    width:1200px !important;
+    max-width:1200px !important;
+    padding:30px !important;
 }
 
 
-/* CELULARES MUY PEQUEÑOS */
-
-@media(max-width:480px){
-
-    .documento{
-        padding:10px;
-    }
-
-
-    .titulo{
-        font-size:24px;
-    }
-
-
-    .table{
-        font-size:12px;
-    }
-
-
-    textarea{
-        font-size:14px;
-    }
-
-
-    .form-control{
-        font-size:14px;
-    }
-
+.modo-pdf .row{
+    display:flex !important;
+    flex-wrap:nowrap !important;
 }
+
+
+.modo-pdf .col-md-2{
+    width:16.666666% !important;
+}
+
+
+.modo-pdf .col-md-7{
+    width:58.333333% !important;
+}
+
+
+.modo-pdf .col-md-3{
+    width:25% !important;
+}
+
+
+.modo-pdf .col-md-5{
+    width:41.666666% !important;
+}
+
+
+.modo-pdf .col-md-4{
+    width:33.333333% !important;
+}
+
+
+.modo-pdf .col-md-3{
+    width:25% !important;
+}
+
+
+.modo-pdf input,
+.modo-pdf textarea{
+    border:none !important;
+    box-shadow:none !important;
+}
+
+
+.modo-pdf #tablaItems{
+    width:100% !important;
+    display:table !important;
+    overflow:visible !important;
+}
+
 </style>
 </head>
 <body>
@@ -235,7 +145,7 @@ body{
 
     <!-- Logo -->
     <div class="col-md-2 text-center">
-        <img src="LOGO.jpeg"
+        <img src="IMG/LOGO.jpeg"
              class="img-fluid rounded"
              style="max-height:120px;"
              alt="Logo El Baqueano">
@@ -516,9 +426,13 @@ function calcularTotales(){
 
 async function generarPDF(){
 
+    const contenido = document.getElementById('contenidoPDF');
+
+    contenido.classList.add('modo-pdf');
+
     document.querySelectorAll('.no-pdf').forEach(el => {
-    el.style.display = 'none';
-});
+        el.style.display = 'none';
+    });
 
     try{
 
@@ -591,6 +505,11 @@ let nombreArchivo = cliente
     .replace(/\s+/g, '-');
 
 pdf.save('Presupuesto-' + nombreArchivo + '.pdf');
+contenido.classList.remove('modo-pdf');
+
+document.querySelectorAll('.no-pdf').forEach(el => {
+    el.style.display = '';
+});
 
     }catch(error){
 
