@@ -71,6 +71,157 @@ body{
         display: none !important;
     }
 }
+
+
+/* ================================
+   RESPONSIVE CELULAR
+================================ */
+
+@media (max-width: 768px){
+
+    body{
+        background:#ffffff;
+    }
+
+    .container{
+        padding:0;
+    }
+
+    .documento{
+        padding:15px;
+        box-shadow:none;
+        width:100%;
+    }
+
+
+    /* ENCABEZADO */
+
+    .row.align-items-center{
+        text-align:center;
+    }
+
+    .col-md-2,
+    .col-md-7,
+    .col-md-3{
+        width:100%;
+        margin-bottom:15px;
+    }
+
+
+    .logo-box img,
+    img{
+        max-width:120px;
+    }
+
+
+    h2{
+        font-size:26px;
+    }
+
+
+    .titulo{
+        font-size:28px;
+        margin:15px 0;
+    }
+
+
+    /* DATOS CLIENTE */
+
+    .row.mb-4 .col-md-5,
+    .row.mb-4 .col-md-4,
+    .row.mb-4 .col-md-3{
+        width:100%;
+        margin-bottom:15px;
+    }
+
+
+    /* TABLA RESPONSIVE */
+
+    #tablaItems{
+        font-size:13px;
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+
+    #tablaItems input{
+        min-width:120px;
+        font-size:13px;
+    }
+
+
+    #tablaItems th,
+    #tablaItems td{
+        padding:5px;
+    }
+
+
+    /* BOTON AGREGAR */
+
+    .btn-success{
+        width:100%;
+    }
+
+
+    /* OBSERVACIONES Y TOTALES */
+
+    .row .col-md-7,
+    .row .col-md-5{
+        width:100%;
+    }
+
+
+    .total-box{
+        font-size:16px;
+    }
+
+
+    /* FIRMA */
+
+    .col-6{
+        width:100%;
+    }
+
+
+    /* INPUT IVA */
+
+    #iva{
+        width:80px!important;
+    }
+
+}
+
+
+/* CELULARES MUY PEQUEÑOS */
+
+@media(max-width:480px){
+
+    .documento{
+        padding:10px;
+    }
+
+
+    .titulo{
+        font-size:24px;
+    }
+
+
+    .table{
+        font-size:12px;
+    }
+
+
+    textarea{
+        font-size:14px;
+    }
+
+
+    .form-control{
+        font-size:14px;
+    }
+
+}
 </style>
 </head>
 <body>
