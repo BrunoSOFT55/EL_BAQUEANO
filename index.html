@@ -135,15 +135,15 @@ body{
 
 
 
-    /* =====================================
-   TABLA COMO PC PERO VERTICAL EN CELULAR
-===================================== */
+   /* =========================================
+   TABLA PRESUPUESTO MOBILE PREMIUM
+========================================= */
 
 @media(max-width:768px){
 
     #tablaItems{
-        border:0 !important;
-        width:100%;
+        border-collapse:separate !important;
+        border-spacing:0;
     }
 
 
@@ -152,79 +152,144 @@ body{
     }
 
 
-    #tablaItems tbody,
-    #tablaItems tr{
+    #tablaItems tbody{
         display:block;
-        width:100%;
     }
 
 
     #tablaItems tr{
-        margin-bottom:15px;
+        display:block;
         border:1px solid #212529;
-        padding:10px;
-        border-radius:6px;
+        border-radius:10px;
+        margin-bottom:15px;
+        padding:12px;
+        background:#fff;
+        box-shadow:0 2px 8px rgba(0,0,0,.08);
     }
 
 
     #tablaItems td{
-        display:block;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
         width:100% !important;
         border:none !important;
-        padding:8px 0;
+        padding:8px 5px;
     }
 
 
-    #tablaItems td::before{
+    /* Número */
+
+    #tablaItems td.numero{
+        justify-content:flex-start;
+        font-weight:bold;
+        color:#0d6efd;
+        border-bottom:1px solid #ddd !important;
+        margin-bottom:8px;
+    }
+
+
+    #tablaItems td.numero::before{
+        content:"Item ";
+    }
+
+
+
+    /* Producto */
+
+    #tablaItems td:nth-child(2){
+        display:block;
+    }
+
+
+    #tablaItems td:nth-child(2)::before{
+        content:"Producto / Servicio";
         display:block;
         font-weight:bold;
         margin-bottom:5px;
     }
 
 
-    /* Número */
-    #tablaItems td.numero::before{
-        content:"#";
-    }
-
-
-    /* Producto */
-    #tablaItems td:nth-child(2)::before{
-        content:"Producto / Servicio";
-    }
-
 
     /* Cantidad */
+
     #tablaItems td:nth-child(3)::before{
         content:"Cantidad";
+        font-weight:bold;
     }
+
 
 
     /* Tarifa */
+
     #tablaItems td:nth-child(4)::before{
         content:"Tarifa";
+        font-weight:bold;
     }
+
 
 
     /* Importe */
+
+    #tablaItems td:nth-child(5){
+
+        background:#f1f7ff;
+        border-radius:8px;
+        margin-top:8px;
+        font-size:16px;
+        font-weight:bold;
+        color:#0d6efd;
+    }
+
+
     #tablaItems td:nth-child(5)::before{
         content:"Importe";
+        color:#212529;
     }
 
 
-    /* Eliminar */
+
+    /* Botón eliminar */
+
     #tablaItems td:nth-child(6){
-        text-align:center;
-        margin-top:5px;
+
+        justify-content:center;
+        margin-top:10px;
     }
+
+
+    #tablaItems td:nth-child(6) button{
+
+        width:100%;
+        max-width:150px;
+        font-weight:bold;
+
+    }
+
 
 
     #tablaItems input{
-        width:100%;
+
+        width:65%;
+        text-align:right;
     }
 
+
+    #tablaItems td:nth-child(2) input{
+
+        width:100%;
+        text-align:left;
+
+    }
+
+
+    .input-group{
+
+        width:65%;
+    }
+
+
 }
-  
 
 </style>
 </head>
