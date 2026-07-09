@@ -132,6 +132,98 @@ body{
     overflow:visible !important;
 }
 
+
+
+
+    /* =====================================
+   TABLA COMO PC PERO VERTICAL EN CELULAR
+===================================== */
+
+@media(max-width:768px){
+
+    #tablaItems{
+        border:0 !important;
+        width:100%;
+    }
+
+
+    #tablaItems thead{
+        display:none;
+    }
+
+
+    #tablaItems tbody,
+    #tablaItems tr{
+        display:block;
+        width:100%;
+    }
+
+
+    #tablaItems tr{
+        margin-bottom:15px;
+        border:1px solid #212529;
+        padding:10px;
+        border-radius:6px;
+    }
+
+
+    #tablaItems td{
+        display:block;
+        width:100% !important;
+        border:none !important;
+        padding:8px 0;
+    }
+
+
+    #tablaItems td::before{
+        display:block;
+        font-weight:bold;
+        margin-bottom:5px;
+    }
+
+
+    /* Número */
+    #tablaItems td.numero::before{
+        content:"#";
+    }
+
+
+    /* Producto */
+    #tablaItems td:nth-child(2)::before{
+        content:"Producto / Servicio";
+    }
+
+
+    /* Cantidad */
+    #tablaItems td:nth-child(3)::before{
+        content:"Cantidad";
+    }
+
+
+    /* Tarifa */
+    #tablaItems td:nth-child(4)::before{
+        content:"Tarifa";
+    }
+
+
+    /* Importe */
+    #tablaItems td:nth-child(5)::before{
+        content:"Importe";
+    }
+
+
+    /* Eliminar */
+    #tablaItems td:nth-child(6){
+        text-align:center;
+        margin-top:5px;
+    }
+
+
+    #tablaItems input{
+        width:100%;
+    }
+
+}
   
 
 </style>
