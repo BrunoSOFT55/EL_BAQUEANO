@@ -291,6 +291,55 @@ body{
 
 }
 
+    /* ==========================================
+   RESTAURAR TABLA ORIGINAL PARA PDF
+========================================== */
+
+.modo-pdf #tablaItems{
+    display:table !important;
+    width:100% !important;
+    border-collapse:collapse !important;
+}
+
+
+.modo-pdf #tablaItems thead{
+    display:table-header-group !important;
+}
+
+
+.modo-pdf #tablaItems tbody{
+    display:table-row-group !important;
+}
+
+
+.modo-pdf #tablaItems tr{
+    display:table-row !important;
+    border:1px solid #212529 !important;
+    padding:0 !important;
+    box-shadow:none !important;
+    border-radius:0 !important;
+}
+
+
+.modo-pdf #tablaItems td,
+.modo-pdf #tablaItems th{
+    display:table-cell !important;
+    border:1px solid #212529 !important;
+    padding:8px !important;
+    width:auto !important;
+}
+
+
+.modo-pdf #tablaItems td::before{
+    content:none !important;
+}
+
+
+.modo-pdf #tablaItems input,
+.modo-pdf #tablaItems textarea{
+    width:100% !important;
+}
+
 </style>
 </head>
 <body>
