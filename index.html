@@ -351,6 +351,46 @@ body{
 
 }
 
+
+
+    /* ===================================
+   ALINEACIÓN ENCABEZADOS TABLA PDF
+=================================== */
+
+/* Centrar encabezados excepto Producto/Servicio */
+#tablaItems thead th:not(:nth-child(2)){
+    text-align:center !important;
+    vertical-align:middle !important;
+}
+
+
+/* Producto / Servicio queda alineado a la izquierda */
+#tablaItems thead th:nth-child(2){
+    text-align:left !important;
+    vertical-align:middle !important;
+}
+
+
+/* Mantener también centrados los valores numéricos */
+#tablaItems td:nth-child(1),
+#tablaItems td:nth-child(3),
+#tablaItems td:nth-child(4),
+#tablaItems td:nth-child(5){
+    text-align:center;
+    vertical-align:middle;
+}
+
+
+/* Producto queda a la izquierda */
+#tablaItems td:nth-child(2){
+    text-align:left;
+}
+
+    
+
+
+
+
     
 
 </style>
@@ -430,7 +470,7 @@ body{
             <tr>
                 <th width="5%">#</th>
                 <th>Producto / Servicio</th>
-                <th width="12%">Cantidad Hs</th>
+                <th width="12%">Cantidad / Hs</th>
                 <th width="15%">Tarifa / Hs</th>
                 <th width="15%">Importe</th>
                 <th width="5%" class="no-print no-pdf">X</th>
@@ -561,9 +601,9 @@ function agregarFila(
 
         <td>
             <input type="number"
-                   class="form-control tarifa"
-                   value="${tarifa}"
-                   oninput="calcularTotales()">
+       class="form-control tarifa text-end"
+       value="${tarifa}"
+       oninput="calcularTotales()">
         </td>
 
         <td class="importe text-end">
