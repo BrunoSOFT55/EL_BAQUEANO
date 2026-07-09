@@ -119,10 +119,40 @@ body{
 }
 
 
+/* ===================================
+   CAMPOS VISIBLES EN PDF
+=================================== */
+
 .modo-pdf input,
 .modo-pdf textarea{
-    border:none !important;
+
+    background:#fff !important;
+    border:1px solid #212529 !important;
+    border-radius:4px !important;
     box-shadow:none !important;
+
+    padding:8px !important;
+}
+
+
+/* Mantener apariencia profesional */
+.modo-pdf label{
+    margin-bottom:5px;
+}
+
+    .modo-pdf textarea{
+    min-height:80px !important;
+    resize:none !important;
+}
+
+
+.modo-pdf #descripcion{
+    height:70px !important;
+}
+
+
+.modo-pdf #observaciones{
+    height:100px !important;
 }
 
 
