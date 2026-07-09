@@ -375,6 +375,66 @@ body{
     white-space:nowrap !important;
 }
 
+
+
+/* ==========================================
+   UNIDAD HS SIN RECUADRO EN PDF
+========================================== */
+
+.modo-pdf .cantidad-box{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end;
+    gap:4px;
+}
+
+
+.modo-pdf .cantidad-box .cantidad{
+    border:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    text-align:right !important;
+    padding-right:2px;
+}
+
+
+.modo-pdf .cantidad-box .input-group-text{
+
+    border:0 !important;
+    background:transparent !important;
+    padding:0 !important;
+    color:#212529;
+    font-weight:normal;
+
+}
+
+
+    @media(max-width:768px){
+
+    .cantidad-box{
+        justify-content:flex-end;
+        gap:5px;
+    }
+
+
+    .cantidad-box .input-group-text{
+        background:transparent;
+        border:0;
+        padding:0;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+    
 </style>
 </head>
 <body>
