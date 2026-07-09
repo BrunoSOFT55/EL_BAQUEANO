@@ -721,6 +721,12 @@ async function generarPDF(){
         const contenido =
         document.getElementById('contenidoPDF');
 
+
+        const obs = document.getElementById("observaciones");
+
+obs.style.height = "auto";
+obs.style.height = obs.scrollHeight + "px";
+        
         const canvas =
         await html2canvas(contenido,{
             scale:3,
