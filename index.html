@@ -579,7 +579,59 @@ body{
 
 }
 
+/* =====================================
+   BLOQUEAR RESPONSIVE DURANTE PDF
+===================================== */
 
+@media(max-width:768px){
+
+    body.generando-pdf .documento{
+
+        width:1200px !important;
+        max-width:1200px !important;
+
+    }
+
+
+    body.generando-pdf .row{
+
+        display:flex !important;
+        flex-wrap:nowrap !important;
+
+    }
+
+
+    body.generando-pdf .col-md-5{
+        width:41.666% !important;
+    }
+
+
+    body.generando-pdf .col-md-4{
+        width:33.333% !important;
+    }
+
+
+    body.generando-pdf .col-md-3{
+        width:25% !important;
+    }
+
+
+    body.generando-pdf #tablaItems tr{
+
+        display:table-row !important;
+
+    }
+
+
+    body.generando-pdf #tablaItems td{
+
+        display:table-cell !important;
+
+    }
+
+}
+
+    
 
 
     
