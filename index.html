@@ -132,6 +132,181 @@ body{
     overflow:visible !important;
 }
 
+
+
+/* =========================================
+   RESPONSIVE CELULAR - SOLO PANTALLA
+========================================= */
+
+@media (max-width: 768px){
+
+    body{
+        background:#fff;
+    }
+
+    .container{
+        padding:0;
+    }
+
+    .documento{
+        padding:15px;
+        box-shadow:none;
+        width:100%;
+    }
+
+
+    /* HEADER */
+    .documento .row.align-items-center{
+        display:block !important;
+        text-align:center;
+    }
+
+
+    .documento .col-md-2,
+    .documento .col-md-7,
+    .documento .col-md-3{
+        width:100% !important;
+        margin-bottom:15px;
+    }
+
+
+    .documento img{
+        max-height:90px !important;
+    }
+
+
+    .titulo{
+        font-size:28px;
+        margin:15px 0;
+    }
+
+
+    /* DATOS CLIENTE */
+
+    .row.mb-4 .col-md-5,
+    .row.mb-4 .col-md-4,
+    .row.mb-4 .col-md-3{
+        width:100%;
+        margin-bottom:15px;
+    }
+
+
+    input,
+    textarea{
+        font-size:16px !important;
+        min-height:45px;
+    }
+
+
+    textarea{
+        resize:none;
+    }
+
+
+
+    /* TABLA ITEMS */
+
+    #tablaItems{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+        font-size:14px;
+    }
+
+
+    #tablaItems th,
+    #tablaItems td{
+        min-width:120px;
+        vertical-align:middle;
+    }
+
+
+    #tablaItems th:first-child,
+    #tablaItems td:first-child{
+        min-width:40px;
+    }
+
+
+    /* PRODUCTO */
+    .producto,
+    .detalle{
+        width:220px;
+    }
+
+
+    /* CANTIDAD */
+    .cantidad{
+        width:70px !important;
+    }
+
+
+    .input-group-text{
+        padding:8px;
+    }
+
+
+    /* TARIFA */
+    .tarifa{
+        width:120px;
+    }
+
+
+    /* BOTON AGREGAR */
+    .btn-success{
+        width:100%;
+        padding:12px;
+    }
+
+
+    /* OBSERVACIONES Y TOTALES */
+
+    .row .col-md-7,
+    .row .col-md-5{
+        width:100%;
+    }
+
+
+    .total-box table{
+        width:100%;
+    }
+
+
+    /* FIRMA */
+
+    .col-6{
+        width:100%;
+    }
+
+
+}
+
+
+/* =========================================
+   EL PDF NO SE TOCA
+========================================= */
+
+.modo-pdf{
+    width:1200px !important;
+    max-width:1200px !important;
+}
+
+
+
+.tabla-responsive{
+    width:100%;
+}
+
+
+@media(max-width:768px){
+
+.tabla-responsive{
+    overflow-x:auto;
+}
+
+}
+
+    
+
 </style>
 </head>
 <body>
@@ -202,7 +377,9 @@ body{
     </div>
 
     <!-- TABLA -->
+    <div class="tabla-responsive">
     <table class="table table-bordered align-middle" id="tablaItems">
+   
         <thead>
             <tr>
                 <th width="5%">#</th>
@@ -218,6 +395,7 @@ body{
 
         </tbody>
     </table>
+    </div>
 
     <button class="btn btn-success no-print no-pdf mb-4" onclick="agregarFila()">
         Agregar Item
