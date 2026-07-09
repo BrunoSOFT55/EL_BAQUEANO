@@ -120,18 +120,34 @@ body{
 
 
 /* ===================================
-   CAMPOS VISIBLES EN PDF
+   CAMPOS DATOS GENERALES EN PDF
 =================================== */
 
-.modo-pdf input,
-.modo-pdf textarea{
+.modo-pdf #facturacion,
+.modo-pdf #envio,
+.modo-pdf #fecha,
+.modo-pdf #descripcion,
+.modo-pdf #observaciones{
 
     background:#fff !important;
     border:1px solid #212529 !important;
     border-radius:4px !important;
     box-shadow:none !important;
-
     padding:8px !important;
+}
+
+
+/* ===================================
+   TABLA DE ITEMS IGUAL QUE ANTES
+=================================== */
+
+.modo-pdf #tablaItems input{
+
+    border:none !important;
+    box-shadow:none !important;
+    background:transparent !important;
+    padding:0 !important;
+
 }
 
 
