@@ -340,6 +340,41 @@ body{
     width:100% !important;
 }
 
+
+
+    /* ==========================================
+   AJUSTES FINALES PDF
+========================================== */
+
+
+/* Ocultar columna eliminar en PDF */
+
+.modo-pdf #tablaItems th:last-child,
+.modo-pdf #tablaItems td:last-child{
+    display:none !important;
+}
+
+
+/* Mantener cantidad y hs juntos */
+
+.modo-pdf .input-group{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    width:100% !important;
+}
+
+
+.modo-pdf .input-group .cantidad{
+    width:100% !important;
+}
+
+
+.modo-pdf .input-group-text{
+    display:flex !important;
+    align-items:center !important;
+    white-space:nowrap !important;
+}
+
 </style>
 </head>
 <body>
@@ -534,14 +569,19 @@ function agregarFila(
         </td>
 
      <td>
-        <div class="input-group">
-        <input type="number"
-               class="form-control cantidad text-end"
-               value="${cantidad}"
-               min="0"
-               oninput="calcularTotales()">
-        <span class="input-group-text">hs</span>
-        </div>
+       <div class="input-group cantidad-box">
+
+<input type="number"
+class="form-control cantidad text-end"
+value="${cantidad}"
+min="0"
+oninput="calcularTotales()">
+
+<span class="input-group-text">
+hs
+</span>
+
+</div>
         </td>
 
         <td>
