@@ -727,6 +727,26 @@ async function generarPDF(){
 
 obs.style.height = "auto";
 obs.style.height = obs.scrollHeight + "px";
+
+        const txt = document.getElementById("observaciones");
+
+const div = document.createElement("div");
+
+div.id = "observacionesPDF";
+
+div.style.border = "1px solid #212529";
+div.style.borderRadius = "4px";
+div.style.padding = "8px";
+div.style.minHeight = txt.offsetHeight + "px";
+div.style.whiteSpace = "pre-wrap";   // <-- conserva los Enter
+div.style.wordBreak = "break-word";
+div.style.fontFamily = getComputedStyle(txt).fontFamily;
+div.style.fontSize = getComputedStyle(txt).fontSize;
+
+div.textContent = txt.value;
+
+txt.style.display = "none";
+txt.parentNode.appendChild(div);
         
         const canvas =
         await html2canvas(contenido,{
@@ -792,6 +812,8 @@ let nombreArchivo = cliente
     .replace(/\s+/g, '-');
 
 pdf.save('Presupuesto-' + nombreArchivo + '.pdf');
+div.remove();
+txt.style.display = "";
 contenido.classList.remove('modo-pdf');
 
 document.querySelectorAll('.no-pdf').forEach(el => {
