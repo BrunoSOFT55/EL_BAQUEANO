@@ -963,21 +963,7 @@ tableWidth:175
 
     y = pdf.lastAutoTable.finalY + 10;
 
-    pdf.setFont("helvetica","bold");
-pdf.text("Descripción del trabajo:", margen, y);
-
-y += 6;
-
-pdf.setFont("helvetica","normal");
-
-const desc =
-document.getElementById("descripcion").value || "-";
-
-const lineasDesc = pdf.splitTextToSize(desc, anchoUtil);
-
-pdf.text(lineasDesc, margen, y);
-
-y += (lineasDesc.length * 5) + 10;
+    
 
     pdf.setFont("helvetica","bold");
 pdf.text("Observaciones:", margen, y);
