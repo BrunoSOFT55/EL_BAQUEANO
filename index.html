@@ -793,43 +793,55 @@ async function generarPDF() {
         //===========================
     // DATOS DEL CLIENTE
     //===========================
+//===========================
+// DATOS DEL CLIENTE
+//===========================
 
-    pdf.setFont("helvetica","bold");
-    pdf.setFontSize(11);
+pdf.setFont("helvetica","bold");
+pdf.setFontSize(11);
 
-    pdf.text("Contratante:", margen, y);
 
-    pdf.setFont("helvetica","normal");
+// CONTRATANTE
+pdf.text("Contratante:", margen, y);
 
-    pdf.text(
-        document.getElementById("facturacion").value || "-",
-        margen + 28,
-        y
-    );
+pdf.setFont("helvetica","normal");
 
-    pdf.setFont("helvetica","bold");
-    pdf.text("Envíe a:", 110, y);
+pdf.text(
+    document.getElementById("facturacion").value || "-",
+    margen + 28,
+    y
+);
 
-    pdf.setFont("helvetica","normal");
 
-    pdf.text(
-        document.getElementById("envio").value || "-",
-        128,
-        y
-    );
+// DESTINO
+pdf.setFont("helvetica","bold");
 
-    pdf.setFont("helvetica","bold");
-    pdf.text("Fecha:", margen, y + 8);
+pdf.text("Destino:", 75, y);
 
-    pdf.setFont("helvetica","normal");
+pdf.setFont("helvetica","normal");
 
-    pdf.text(
-        document.getElementById("fecha").value || "-",
-        margen + 18,
-        y + 8
-    );
+pdf.text(
+    document.getElementById("envio").value || "-",
+    95,
+    y
+);
 
-    y += 20;
+
+// FECHA
+pdf.setFont("helvetica","bold");
+
+pdf.text("Fecha:", 150, y);
+
+pdf.setFont("helvetica","normal");
+
+pdf.text(
+    document.getElementById("fecha").value || "-",
+    165,
+    y
+);
+
+
+y += 15;
 
     //===========================
     // DESCRIPCIÓN
