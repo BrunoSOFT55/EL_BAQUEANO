@@ -936,10 +936,10 @@ async function generarPDF() {
             halign:"center"
         },
 
-       columnStyles:{
+    columnStyles:{
 
     0:{
-        cellWidth:90
+        cellWidth:85
     },
 
     1:{
@@ -957,7 +957,9 @@ async function generarPDF() {
         halign:"right"
     }
 
-}
+},
+
+tableWidth:175
     });
 
 
@@ -995,24 +997,56 @@ pdf.text(lineasObs, margen, y);
 
 y += (lineasObs.length * 5) + 10;
 
-    pdf.autoTable({
+pdf.autoTable({
 
 startY:y,
 
+tableWidth:80,
+
+margin:{
+    left:115
+},
+
 body:[
+
 [
 "Subtotal",
 document.getElementById("subtotal").innerText
 ],
+
 [
 "IVA",
 document.getElementById("montoIva").innerText
 ],
+
 [
 "TOTAL",
 document.getElementById("total").innerText
 ]
+
 ],
+
+theme:"grid",
+
+styles:{
+    fontSize:10,
+    cellPadding:3
+},
+
+columnStyles:{
+
+0:{
+    cellWidth:40
+},
+
+1:{
+    cellWidth:40,
+    halign:"right"
+}
+
+}
+
+});
 
 theme:"grid",
 
