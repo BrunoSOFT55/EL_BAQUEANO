@@ -1106,14 +1106,9 @@ pdf.text(
     yFirma + 8
 );
     
-const cliente =
-    document.getElementById("facturacion").value.trim() || "SinNombre";
+const nombreCliente = document.getElementById("facturacion").value.trim();
 
-const nombreArchivo = `Presupuesto - ${cliente}`
-    .replace(/[\\/:*?"<>|]/g, "") // elimina caracteres no válidos
-    .replace(/\s+/g, " ");        // evita espacios repetidos
-
-pdf.save(`${nombreArchivo}.pdf`);
+pdf.save(`Presupuesto - ${nombreCliente || "SinNombre"}.pdf`);
     
 // Datos iniciales similares a tu ejemplo
 document.getElementById('fecha').value =
