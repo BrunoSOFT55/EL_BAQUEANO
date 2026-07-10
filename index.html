@@ -892,52 +892,45 @@ y += 15;
     // TABLA DE PRODUCTOS
     //=========================================
 
-    const filas = [];
+   const filas = [];
 
-    document.querySelectorAll("#tbody tr").forEach(tr=>{
+document.querySelectorAll("#tbody tr").forEach(tr=>{
 
-        const producto =
-            tr.querySelector(".producto").value;
+    const producto =
+        tr.querySelector(".producto").value;
 
-        const detalle =
-            tr.querySelector(".detalle").value;
+    const detalle =
+        tr.querySelector(".detalle").value;
 
-        const cantidad =
-            tr.querySelector(".cantidad").value;
+    const cantidad =
+        tr.querySelector(".cantidad").value;
 
-        const tarifa =
-            parseFloat(
-                tr.querySelector(".tarifa").value || 0
-            );
+    const tarifa =
+        parseFloat(
+            tr.querySelector(".tarifa").value || 0
+        );
 
-        const importe =
-            cantidad * tarifa;
+    const importe =
+        cantidad * tarifa;
 
-       filas.push([
 
-[
-    {
-        content: producto,
-        styles:{
-            fontStyle:"bold"
-        }
-    },
-    {
-        content: detalle ? "\n" + detalle : "",
-        styles:{
-            fontStyle:"normal",
-            fontSize:8
-        }
-    }
-],
+    filas.push([
 
-cantidad,
+        producto + 
+        (detalle ? "\n" + detalle : ""),
 
-formatoMoneda(tarifa),
+        cantidad,
 
-formatoMoneda(importe)
+        formatoMoneda(tarifa),
 
-]);
+        formatoMoneda(importe)
+
+    ]);
+
+});
+
+    ]);
+
 
  
 
