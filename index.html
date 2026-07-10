@@ -790,7 +790,7 @@ async function generarPDF() {
 
     y = 68;
 
-   //===========================
+    //===========================
 // DATOS DEL CLIENTE
 //===========================
 
@@ -803,8 +803,17 @@ pdf.text("Contratante:", margen, y);
 
 pdf.setFont("helvetica","normal");
 
+const contratante =
+document.getElementById("facturacion").value || "-";
+
+const contratanteLineas =
+pdf.splitTextToSize(
+    contratante,
+    70
+);
+
 pdf.text(
-    document.getElementById("facturacion").value || "-",
+    contratanteLineas,
     margen + 28,
     y
 );
@@ -813,32 +822,37 @@ pdf.text(
 // DESTINO
 pdf.setFont("helvetica","bold");
 
-pdf.text("Destino:", 95, y);
+pdf.text("Destino:", 120, y);
 
 pdf.setFont("helvetica","normal");
 
 pdf.text(
     document.getElementById("envio").value || "-",
-    115,
+    140,
     y
 );
 
 
-// FECHA
+// FECHA (segunda línea)
+y += 12;
+
 pdf.setFont("helvetica","bold");
 
-pdf.text("Fecha:", 155, y);
+pdf.text("Fecha:", margen, y);
 
 pdf.setFont("helvetica","normal");
 
 pdf.text(
     document.getElementById("fecha").value || "-",
-    170,
+    margen + 18,
     y
 );
 
 
 y += 15;
+
+
+    
     //===========================
     // DESCRIPCIÓN
     //===========================
