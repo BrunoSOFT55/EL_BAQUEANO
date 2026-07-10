@@ -1155,6 +1155,10 @@ pdf.autoTable({
 });
 
 // Continuar debajo del elemento más alto
+const lineasObs = pdf.splitTextToSize(
+    obs,
+    100
+);
 
 const altoObservaciones = (lineasObs.length * 5) + 20;
 const altoTotales = pdf.lastAutoTable.finalY - yFinal;
@@ -1170,6 +1174,15 @@ let yFirma = yFinal + 10;
 pdf.setFont("helvetica","normal");
 pdf.setFontSize(11);
 
+    if(yFirma > altoPagina - 30){
+
+    pdf.addPage();
+
+    dibujarEncabezado(pdf,margen);
+
+    yFirma = 80;
+
+}
 pdf.line(
     130,
     yFirma,
