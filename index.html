@@ -913,18 +913,31 @@ y += 15;
         const importe =
             cantidad * tarifa;
 
-        filas.push([
+       filas.push([
 
-            producto +
-            (detalle ? "\n"+detalle : ""),
+[
+    {
+        content: producto,
+        styles:{
+            fontStyle:"bold"
+        }
+    },
+    {
+        content: detalle ? "\n" + detalle : "",
+        styles:{
+            fontStyle:"normal",
+            fontSize:8
+        }
+    }
+],
 
-            cantidad,
+cantidad,
 
-            formatoMoneda(tarifa),
+formatoMoneda(tarifa),
 
-            formatoMoneda(importe)
+formatoMoneda(importe)
 
-        ]);
+]);
 
     });
 
