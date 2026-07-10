@@ -1136,13 +1136,16 @@ yFinal = pdf.lastAutoTable.finalY + 10;
 // OBSERVACIONES ANCHO COMPLETO
 // =====================================
 
+// ---------- OBSERVACIONES ----------
+
+
 const obs =
 document.getElementById("observaciones").value || "-";
 
 
 pdf.autoTable({
 
-    startY:yFinal,
+    startY: pdf.lastAutoTable.finalY + 10,
 
     head:[[
         "Observaciones"
