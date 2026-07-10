@@ -985,41 +985,11 @@ tableWidth:175
 
     y = pdf.lastAutoTable.finalY + 10;
 
-    
 // =====================================
-// OBSERVACIONES + TOTALES EN PARALELO
+// TOTALES
 // =====================================
 
 let yFinal = y;
-
-const obs =
-document.getElementById("observaciones").value || "-";
-
-
-// ---- IZQUIERDA ----
-
-pdf.setFont("helvetica","bold");
-pdf.setFontSize(11);
-
-pdf.text(
-    "Observaciones:",
-    margen,
-    yFinal
-);
-
-pdf.setFont("helvetica","normal");
-pdf.setFontSize(10);
-
-const lineasObs = pdf.splitTextToSize(
-    obs,
-    90
-);
-
-pdf.text(
-    lineasObs,
-    margen,
-    yFinal + 7
-);
 
 
 // ---- DERECHA: TOTALES ----
@@ -1073,11 +1043,51 @@ columnStyles:{
 
 }
 
-    
-    
 });
 
 
+// Obtener nueva posición debajo de los totales
+
+yFinal = pdf.lastAutoTable.finalY + 15;
+
+
+// =====================================
+// OBSERVACIONES AL FINAL
+// =====================================
+
+
+const obs =
+document.getElementById("observaciones").value || "-";
+
+
+pdf.setFont("helvetica","bold");
+pdf.setFontSize(11);
+
+pdf.text(
+    "Observaciones:",
+    margen,
+    yFinal
+);
+
+
+pdf.setFont("helvetica","normal");
+pdf.setFontSize(10);
+
+
+const lineasObs = pdf.splitTextToSize(
+    obs,
+    anchoUtil
+);
+
+
+pdf.text(
+    lineasObs,
+    margen,
+    yFinal + 7
+);
+
+
+yFinal += (lineasObs.length * 5) + 20;
 
 // =====================================
 // FIRMA
