@@ -1051,8 +1051,33 @@ columnStyles:{
 
 }
 
+    
+    
 });
 
+
+
+// =====================================
+// FIRMA
+// =====================================
+
+let yFirma = pdf.lastAutoTable.finalY + 35;
+
+pdf.setFont("helvetica","normal");
+pdf.setFontSize(11);
+
+pdf.line(
+    130,
+    yFirma,
+    190,
+    yFirma
+);
+
+pdf.text(
+    "AGUERRE LUCAS",
+    145,
+    yFirma + 8
+);
     
 pdf.save("Presupuesto-El-Baqueano.pdf");
 } 
