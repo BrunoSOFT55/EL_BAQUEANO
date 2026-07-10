@@ -1045,65 +1045,9 @@ didDrawPage: function (data) {
 
 let yFinal = y;
 
-// ---------- IZQUIERDA: OBSERVACIONES ----------
 
 
-    const obs =
-    document.getElementById("observaciones").value || "-";
-
-pdf.autoTable({
-
-    startY: yFinal,
-
-    head: [[
-        "Observaciones"
-    ]],
-
-    body: [[
-        obs
-    ]],
-
-    theme: "grid",
-
-    styles: {
-        fontSize: 10,
-        cellPadding: 4,
-        overflow: "linebreak",
-        valign: "top"
-    },
-
-    headStyles: {
-        fillColor: [13,110,253],
-        textColor: 255,
-        halign: "left"
-    },
-
-    margin: {
-        left: margen,
-        right: margen,
-        top: 68,
-        bottom: 35
-    },
-
-    tableWidth: "auto"
-
-});
-
-    didDrawPage: function(data){
-
-        if(data.pageNumber > 1){
-
-            dibujarEncabezado(pdf, margen);
-
-        }
-
-    }
-
-});
-
-yFinal = pdf.lastAutoTable.finalY + 5;
-
-// ---------- DERECHA: TOTALES ----------
+    // ---------- DERECHA: TOTALES ----------
 // ---------- TOTALES ANCHO COMPLETO ----------
 
 pdf.autoTable({
@@ -1169,6 +1113,66 @@ pdf.autoTable({
     }
 
 });
+    
+// ---------- IZQUIERDA: OBSERVACIONES ----------
+
+
+    const obs =
+    document.getElementById("observaciones").value || "-";
+
+pdf.autoTable({
+
+    startY: yFinal,
+
+    head: [[
+        "Observaciones"
+    ]],
+
+    body: [[
+        obs
+    ]],
+
+    theme: "grid",
+
+    styles: {
+        fontSize: 10,
+        cellPadding: 4,
+        overflow: "linebreak",
+        valign: "top"
+    },
+
+    headStyles: {
+        fillColor: [13,110,253],
+        textColor: 255,
+        halign: "left"
+    },
+
+    margin: {
+        left: margen,
+        right: margen,
+        top: 68,
+        bottom: 35
+    },
+
+    tableWidth: "auto"
+
+});
+
+    didDrawPage: function(data){
+
+        if(data.pageNumber > 1){
+
+            dibujarEncabezado(pdf, margen);
+
+        }
+
+    }
+
+});
+
+yFinal = pdf.lastAutoTable.finalY + 5;
+
+
 // Continuar debajo del elemento más alto
 const lineasObs = pdf.splitTextToSize(
     obs,
