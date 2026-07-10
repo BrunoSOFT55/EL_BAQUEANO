@@ -961,7 +961,75 @@ async function generarPDF() {
 
 
     y = pdf.lastAutoTable.finalY + 10;
-pdf.save("Presupuesto.pdf");
+
+    pdf.setFont("helvetica","bold");
+pdf.text("Descripción del trabajo:", margen, y);
+
+y += 6;
+
+pdf.setFont("helvetica","normal");
+
+const desc =
+document.getElementById("descripcion").value || "-";
+
+const lineasDesc = pdf.splitTextToSize(desc, anchoUtil);
+
+pdf.text(lineasDesc, margen, y);
+
+y += (lineasDesc.length * 5) + 10;
+
+    pdf.setFont("helvetica","bold");
+pdf.text("Observaciones:", margen, y);
+
+y += 6;
+
+pdf.setFont("helvetica","normal");
+
+const obs =
+document.getElementById("observaciones").value || "-";
+
+const lineasObs = pdf.splitTextToSize(obs, anchoUtil);
+
+pdf.text(lineasObs, margen, y);
+
+y += (lineasObs.length * 5) + 10;
+
+    pdf.autoTable({
+
+startY:y,
+
+body:[
+[
+"Subtotal",
+document.getElementById("subtotal").innerText
+],
+[
+"IVA",
+document.getElementById("montoIva").innerText
+],
+[
+"TOTAL",
+document.getElementById("total").innerText
+]
+],
+
+theme:"grid",
+
+styles:{
+fontSize:10
+},
+
+columnStyles:{
+0:{
+cellWidth:80
+},
+1:{
+cellWidth:40,
+halign:"right"
+}
+}
+
+});
 
 }
 
