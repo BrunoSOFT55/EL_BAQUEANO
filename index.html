@@ -790,10 +790,7 @@ async function generarPDF() {
 
     y = 68;
 
-        //===========================
-    // DATOS DEL CLIENTE
-    //===========================
-//===========================
+   //===========================
 // DATOS DEL CLIENTE
 //===========================
 
@@ -816,13 +813,13 @@ pdf.text(
 // DESTINO
 pdf.setFont("helvetica","bold");
 
-pdf.text("Destino:", 75, y);
+pdf.text("Destino:", 95, y);
 
 pdf.setFont("helvetica","normal");
 
 pdf.text(
     document.getElementById("envio").value || "-",
-    95,
+    115,
     y
 );
 
@@ -830,19 +827,18 @@ pdf.text(
 // FECHA
 pdf.setFont("helvetica","bold");
 
-pdf.text("Fecha:", 150, y);
+pdf.text("Fecha:", 155, y);
 
 pdf.setFont("helvetica","normal");
 
 pdf.text(
     document.getElementById("fecha").value || "-",
-    165,
+    170,
     y
 );
 
 
 y += 15;
-
     //===========================
     // DESCRIPCIÓN
     //===========================
