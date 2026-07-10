@@ -964,32 +964,53 @@ tableWidth:175
     y = pdf.lastAutoTable.finalY + 10;
 
     
+// =====================================
+// OBSERVACIONES + TOTALES EN PARALELO
+// =====================================
 
-    pdf.setFont("helvetica","bold");
-pdf.text("Observaciones:", margen, y);
-
-y += 6;
-
-pdf.setFont("helvetica","normal");
+let yFinal = y;
 
 const obs =
 document.getElementById("observaciones").value || "-";
 
-const lineasObs = pdf.splitTextToSize(obs, anchoUtil);
 
-pdf.text(lineasObs, margen, y);
+// ---- IZQUIERDA ----
 
-y += (lineasObs.length * 5) + 10;
+pdf.setFont("helvetica","bold");
+pdf.setFontSize(11);
+
+pdf.text(
+    "Observaciones:",
+    margen,
+    yFinal
+);
+
+pdf.setFont("helvetica","normal");
+pdf.setFontSize(10);
+
+const lineasObs = pdf.splitTextToSize(
+    obs,
+    90
+);
+
+pdf.text(
+    lineasObs,
+    margen,
+    yFinal + 7
+);
+
+
+// ---- DERECHA: TOTALES ----
 
 pdf.autoTable({
 
-startY:y,
-
-tableWidth:80,
+startY:yFinal,
 
 margin:{
     left:115
 },
+
+tableWidth:80,
 
 body:[
 
@@ -1031,6 +1052,8 @@ columnStyles:{
 }
 
 });
+
+    
 pdf.save("Presupuesto-El-Baqueano.pdf");
 } 
     
