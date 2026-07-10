@@ -1040,15 +1040,15 @@ didDrawPage: function (data) {
 
     y = pdf.lastAutoTable.finalY + 10;
 // =====================================
-// OBSERVACIONES + TOTALES EN LA MISMA LÍNEA
+// TOTALES + OBSERVACIONES
 // =====================================
 
 let yFinal = y;
 
 
-
-    // ---------- DERECHA: TOTALES ----------
-// ---------- TOTALES ANCHO COMPLETO ----------
+// =====================================
+// TOTALES ANCHO COMPLETO
+// =====================================
 
 pdf.autoTable({
 
@@ -1097,7 +1097,9 @@ pdf.autoTable({
 
     margin:{
         left:margen,
-        right:margen
+        right:margen,
+        top:68,
+        bottom:35
     },
 
     tableWidth:"auto",
@@ -1110,59 +1112,13 @@ pdf.autoTable({
 
         }
 
-    }
-
-});
-    
-// ---------- IZQUIERDA: OBSERVACIONES ----------
-
-
-    const obs =
-    document.getElementById("observaciones").value || "-";
-
-pdf.autoTable({
-
-    startY: yFinal,
-
-    head: [[
-        "Observaciones"
-    ]],
-
-    body: [[
-        obs
-    ]],
-
-    theme: "grid",
-
-    styles: {
-        fontSize: 10,
-        cellPadding: 4,
-        overflow: "linebreak",
-        valign: "top"
     },
 
-    headStyles: {
-        fillColor: [13,110,253],
-        textColor: 255,
-        halign: "left"
-    },
-
-    margin: {
-        left: margen,
-        right: margen,
-        top: 68,
-        bottom: 35
-    },
-
-    tableWidth: "auto"
-
-});
-
-    didDrawPage: function(data){
+    didDrawPage:function(data){
 
         if(data.pageNumber > 1){
 
-            dibujarEncabezado(pdf, margen);
+            dibujarEncabezado(pdf,margen);
 
         }
 
@@ -1170,8 +1126,82 @@ pdf.autoTable({
 
 });
 
-yFinal = pdf.lastAutoTable.finalY + 5;
 
+// posición debajo de la tabla de totales
+
+yFinal = pdf.lastAutoTable.finalY + 10;
+
+
+// =====================================
+// OBSERVACIONES ANCHO COMPLETO
+// =====================================
+
+const obs =
+document.getElementById("observaciones").value || "-";
+
+
+pdf.autoTable({
+
+    startY:yFinal,
+
+    head:[[
+        "Observaciones"
+    ]],
+
+    body:[[
+        obs
+    ]],
+
+    theme:"grid",
+
+    styles:{
+        font:"helvetica",
+        fontSize:10,
+        cellPadding:4,
+        overflow:"linebreak",
+        valign:"top"
+    },
+
+    headStyles:{
+        fillColor:[13,110,253],
+        textColor:255,
+        halign:"left"
+    },
+
+    margin:{
+        left:margen,
+        right:margen,
+        top:68,
+        bottom:35
+    },
+
+    tableWidth:"auto",
+
+    didDrawPage:function(data){
+
+        if(data.pageNumber > 1){
+
+            dibujarEncabezado(pdf,margen);
+
+        }
+
+    }
+
+});
+
+
+// continuar debajo del bloque más alto
+
+const lineasObs = pdf.splitTextToSize(
+    obs,
+    anchoUtil
+);
+
+const altoObservaciones = (lineasObs.length * 5) + 20;
+
+const altoTotales = pdf.lastAutoTable.finalY - yFinal;
+
+yFinal += Math.max(altoObservaciones, altoTotales) + 10;
 
 // Continuar debajo del elemento más alto
 const lineasObs = pdf.splitTextToSize(
