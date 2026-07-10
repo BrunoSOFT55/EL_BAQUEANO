@@ -787,7 +787,16 @@ async function generarPDF() {
     let y = 15;
 
 dibujarEncabezado(pdf,margen);
-  
+
+    pdf.setFont("helvetica","bold");
+pdf.setFontSize(22);
+
+pdf.text(
+    "PRESUPUESTO",
+    anchoPagina / 2,
+    55,
+    {align:"center"}
+);
 
 y = 68;
 
