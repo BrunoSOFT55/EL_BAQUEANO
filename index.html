@@ -708,7 +708,8 @@ function calcularTotales(){
 
 }
 
-    async function dibujarEncabezado(pdf, margen) {
+    function dibujarEncabezado(pdf,margen){
+    
 
     const anchoPagina = pdf.internal.pageSize.getWidth();
 
@@ -793,7 +794,8 @@ async function generarPDF() {
 
     let y = 15;
 
-  await dibujarEncabezado(pdf, margen);
+dibujarEncabezado(pdf,margen);
+  
 
 y = 68;
 
@@ -864,37 +866,58 @@ y += 15;
     // DESCRIPCIÓN
     //===========================
 
-    pdf.setFont("helvetica","bold");
-    pdf.setFontSize(11);
+ const descripcion =
+    document.getElementById("descripcion").value || "-";
 
-    pdf.text(
-        "Descripción del trabajo",
-        margen,
-        y
-    );
+pdf.autoTable({
 
-    y += 6;
+    startY: y,
 
-    pdf.setFont("helvetica","normal");
-    pdf.setFontSize(10);
+    theme: "grid",
 
-    const descripcion =
-        document.getElementById("descripcion").value || "";
+    head: [[
+        "Descripción del trabajo"
+    ]],
 
-    const descripcionLineas =
-        pdf.splitTextToSize(
-            descripcion,
-            anchoUtil
-        );
+    body: [[
+        descripcion
+    ]],
 
-    pdf.text(
-        descripcionLineas,
-        margen,
-        y
-    );
+    styles: {
+        fontSize: 10,
+        cellPadding: 4,
+        overflow: "linebreak",
+        valign: "top"
+    },
 
-    y += (descripcionLineas.length * 5) + 8;
+    headStyles: {
+        fillColor: [13,110,253],
+        textColor: 255,
+        halign: "left"
+    },
 
+    margin: {
+        left: margen,
+        right: margen,
+        top: 68,
+        bottom: 35
+    },
+
+    tableWidth: "auto",
+
+    didDrawPage: function(data){
+
+        if(data.pageNumber>1){
+
+            dibujarEncabezado(pdf,margen);
+
+        }
+
+    }
+
+});
+
+y = pdf.lastAutoTable.finalY + 8;
         //=========================================
     // TABLA DE PRODUCTOS
     //=========================================
@@ -944,7 +967,7 @@ document.querySelectorAll("#tbody tr").forEach(tr=>{
 
     pdf.autoTable({
 
-        startY:95,
+        startY:Y,
 
         head:[[
             "Producto / Servicio",
@@ -1024,31 +1047,59 @@ let yFinal = y;
 
 // ---------- IZQUIERDA: OBSERVACIONES ----------
 
-const obs =
+
+    const obs =
     document.getElementById("observaciones").value || "-";
 
-pdf.setFont("helvetica", "bold");
-pdf.setFontSize(11);
+pdf.autoTable({
 
-pdf.text(
-    "Observaciones:",
-    margen,
-    yFinal + 5
-);
+    startY: yFinal,
 
-pdf.setFont("helvetica", "normal");
-pdf.setFontSize(10);
+    head: [[
+        "Observaciones"
+    ]],
 
-const lineasObs = pdf.splitTextToSize(
-    obs,
-    100 // ancho reservado para observaciones
-);
+    body: [[
+        obs
+    ]],
 
-pdf.text(
-    lineasObs,
-    margen,
-    yFinal + 12
-);
+    theme: "grid",
+
+    styles: {
+        fontSize: 10,
+        cellPadding: 4,
+        overflow: "linebreak",
+        valign: "top"
+    },
+
+    headStyles: {
+        fillColor: [13,110,253],
+        textColor: 255,
+        halign: "left"
+    },
+
+    margin: {
+        left: margen,
+        right: 90,
+        top: 68,
+        bottom: 35
+    },
+
+    tableWidth: 100,
+
+    didDrawPage: function(data){
+
+        if(data.pageNumber > 1){
+
+            dibujarEncabezado(pdf, margen);
+
+        }
+
+    }
+
+});
+
+yFinal = pdf.lastAutoTable.finalY + 5;
 
 // ---------- DERECHA: TOTALES ----------
 
