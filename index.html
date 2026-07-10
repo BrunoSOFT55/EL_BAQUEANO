@@ -901,7 +901,7 @@ pdf.autoTable({
         left: margen,
         right: margen,
         top: 68,
-        bottom: 35
+        bottom: 35,
     },
 
     tableWidth: "auto",
@@ -1215,7 +1215,7 @@ yFinal += Math.max(altoObservaciones, altoTotales) + 10;
 // =====================================
 // FIRMA
 // =====================================
-
+let yFinal = pdf.lastAutoTable.finalY;
 let yFirma = yFinal + 20;
 
 pdf.setFont("helvetica","normal");
