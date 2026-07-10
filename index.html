@@ -990,110 +990,99 @@ tableWidth:175
     }); 
 
     y = pdf.lastAutoTable.finalY + 10;
-
 // =====================================
-// TOTALES
+// OBSERVACIONES + TOTALES EN LA MISMA LÍNEA
 // =====================================
 
 let yFinal = y;
 
-
-// ---- DERECHA: TOTALES ----
-
-pdf.autoTable({
-
-startY:yFinal,
-
-margin:{
-    left:115
-},
-
-tableWidth:80,
-
-body:[
-
-[
-"Subtotal",
-document.getElementById("subtotal").innerText
-],
-
-[
-"IVA",
-document.getElementById("montoIva").innerText
-],
-
-[
-"TOTAL",
-document.getElementById("total").innerText
-]
-
-],
-
-theme:"grid",
-
-styles:{
-    fontSize:10,
-    cellPadding:3
-},
-
-columnStyles:{
-
-0:{
-    cellWidth:40
-},
-
-1:{
-    cellWidth:40,
-    halign:"right"
-}
-
-}
-
-});
-
-
-// Obtener nueva posición debajo de los totales
-
-yFinal = pdf.lastAutoTable.finalY + 15;
-
-
-// =====================================
-// OBSERVACIONES AL FINAL
-// =====================================
-
+// ---------- IZQUIERDA: OBSERVACIONES ----------
 
 const obs =
-document.getElementById("observaciones").value || "-";
+    document.getElementById("observaciones").value || "-";
 
-
-pdf.setFont("helvetica","bold");
+pdf.setFont("helvetica", "bold");
 pdf.setFontSize(11);
 
 pdf.text(
     "Observaciones:",
     margen,
-    yFinal
+    yFinal + 5
 );
 
-
-pdf.setFont("helvetica","normal");
+pdf.setFont("helvetica", "normal");
 pdf.setFontSize(10);
-
 
 const lineasObs = pdf.splitTextToSize(
     obs,
-    anchoUtil
+    100 // ancho reservado para observaciones
 );
-
 
 pdf.text(
     lineasObs,
     margen,
-    yFinal + 7
+    yFinal + 12
 );
 
+// ---------- DERECHA: TOTALES ----------
 
-yFinal += (lineasObs.length * 5) + 20;
+pdf.autoTable({
+
+    startY: yFinal,
+
+    margin: {
+        left: 125
+    },
+
+    tableWidth: 70,
+
+    body: [
+
+        [
+            "Subtotal",
+            document.getElementById("subtotal").innerText
+        ],
+
+        [
+            "IVA",
+            document.getElementById("montoIva").innerText
+        ],
+
+        [
+            "TOTAL",
+            document.getElementById("total").innerText
+        ]
+
+    ],
+
+    theme: "grid",
+
+    styles: {
+        fontSize: 10,
+        cellPadding: 3
+    },
+
+    columnStyles: {
+
+        0: {
+            cellWidth: 35
+        },
+
+        1: {
+            cellWidth: 35,
+            halign: "right"
+        }
+
+    }
+
+});
+
+// Continuar debajo del elemento más alto
+
+const altoObservaciones = (lineasObs.length * 5) + 20;
+const altoTotales = pdf.lastAutoTable.finalY - yFinal;
+
+yFinal += Math.max(altoObservaciones, altoTotales) + 10;
 
 // =====================================
 // FIRMA
