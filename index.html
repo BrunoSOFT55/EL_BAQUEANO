@@ -1216,7 +1216,7 @@ yFinal += Math.max(altoObservaciones, altoTotales) + 10;
 // FIRMA
 // =====================================
 
-let yFirma = yFinal + 20;
+let yFirma = pdf.lastAutoTable.finalY + 20;
 
 pdf.setFont("helvetica","normal");
 pdf.setFontSize(11);
@@ -1232,8 +1232,9 @@ if(yFirma > altoPagina - 45){
 
     yFirma = 80;
 
-
 }
+
+
 pdf.line(
     130,
     yFirma,
