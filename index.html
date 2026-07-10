@@ -944,7 +944,7 @@ document.querySelectorAll("#tbody tr").forEach(tr=>{
 
     pdf.autoTable({
 
-        startY:y,
+        startY:95,
 
         head:[[
             "Producto / Servicio",
@@ -993,7 +993,26 @@ document.querySelectorAll("#tbody tr").forEach(tr=>{
 
 },
 
-tableWidth:175
+margin: {
+    top: 68,
+    bottom: 35,
+    left: margen,
+    right: margen
+},
+
+tableWidth: "auto",
+
+didDrawPage: function (data) {
+
+    // Solo desde la segunda página
+    if (data.pageNumber > 1) {
+
+        dibujarEncabezado(pdf, margen);
+
+    }
+
+}
+        
     }); 
 
     y = pdf.lastAutoTable.finalY + 10;
