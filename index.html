@@ -1103,7 +1103,7 @@ pdf.autoTable({
         bottom:35
     },
 
-    tableWidth:"auto",
+    tableWidth:"100",
 
     didParseCell:function(data){
 
@@ -1139,8 +1139,7 @@ yFinal = pdf.lastAutoTable.finalY + 10;
 
 // ---------- OBSERVACIONES ----------
 
-
-const obs =
+const obs = 
 document.getElementById("observaciones").value || "-";
 
 
@@ -1148,13 +1147,22 @@ pdf.autoTable({
 
     startY: pdf.lastAutoTable.finalY + 10,
 
-    head:[[
-        "Observaciones"
-    ]],
-
-    body:[[
-        obs
-    ]],
+    body:[
+        [
+            {
+                content:"Observaciones",
+                styles:{
+                    fillColor:[13,110,253],
+                    textColor:255,
+                    fontStyle:"bold",
+                    halign:"left"
+                }
+            }
+        ],
+        [
+            obs
+        ]
+    ],
 
     theme:"grid",
 
@@ -1166,12 +1174,6 @@ pdf.autoTable({
         valign:"top"
     },
 
-    headStyles:{
-        fillColor:[13,110,253],
-        textColor:255,
-        halign:"left"
-    },
-
     margin:{
         left:margen,
         right:margen,
@@ -1180,6 +1182,8 @@ pdf.autoTable({
     },
 
     tableWidth:"auto",
+
+    rowPageBreak:"auto",
 
     didDrawPage:function(data){
 
@@ -1192,7 +1196,6 @@ pdf.autoTable({
     }
 
 });
-
 
 // continuar debajo del bloque más alto
 
