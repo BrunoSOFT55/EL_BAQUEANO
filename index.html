@@ -1102,18 +1102,15 @@ pdf.autoTable({
 yFinal = pdf.lastAutoTable.finalY + 5;
 
 // ---------- DERECHA: TOTALES ----------
+// ---------- TOTALES ANCHO COMPLETO ----------
 
 pdf.autoTable({
 
     startY: yFinal,
 
-    margin: {
-        left: 125
-    },
+    theme:"grid",
 
-    tableWidth: 70,
-
-    body: [
+    body:[
 
         [
             "Subtotal",
@@ -1132,28 +1129,44 @@ pdf.autoTable({
 
     ],
 
-    theme: "grid",
-
-    styles: {
-        fontSize: 10,
-        cellPadding: 3
+    styles:{
+        font:"helvetica",
+        fontSize:10,
+        cellPadding:4
     },
 
-    columnStyles: {
+    columnStyles:{
 
-        0: {
-            cellWidth: 35
+        0:{
+            cellWidth:120,
+            fontStyle:"bold"
         },
 
-        1: {
-            cellWidth: 35,
-            halign: "right"
+        1:{
+            cellWidth:50,
+            halign:"right"
+        }
+
+    },
+
+    margin:{
+        left:margen,
+        right:margen
+    },
+
+    tableWidth:"auto",
+
+    didParseCell:function(data){
+
+        if(data.row.index === 2){
+
+            data.cell.styles.fontStyle="bold";
+
         }
 
     }
 
 });
-
 // Continuar debajo del elemento más alto
 const lineasObs = pdf.splitTextToSize(
     obs,
