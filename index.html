@@ -1213,12 +1213,15 @@ yFinal += Math.max(altoObservaciones, altoTotales) + 10;
 // FIRMA
 // =====================================
 
-let yFirma = yFinal + 10;
+let yFirma = yFinal + 20;
 
 pdf.setFont("helvetica","normal");
 pdf.setFontSize(11);
 
-    if(yFirma > altoPagina - 30){
+
+// Verificar espacio disponible antes de crear nueva página
+
+if(yFirma > altoPagina - 45){
 
     pdf.addPage();
 
@@ -1226,6 +1229,7 @@ pdf.setFontSize(11);
 
     yFirma = 80;
 
+}
 }
 pdf.line(
     130,
